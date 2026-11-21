@@ -14,7 +14,7 @@ in
       #./kde.nix
       ./i3.nix
       ./systemManagement.nix
-      ./neovim.nix
+      #./vim.nix
       ./bash.nix
     ];
 
@@ -43,16 +43,11 @@ in
   # Define a user account. Don't forget to set a password with ‘passwd’.
 
 
-  home-manager = {
-    useUserPackages = true;
-    users.niklas = { pkgs, ... }: {
-      home.packages = [
-	    
-      ];
-      home.stateVersion = "26.05";
-    };
-  };
+  home-manager.users.niklas = {
 
+    home.stateVersion = "26.05";
+
+  };
     
 users.users."niklas" = {
     isNormalUser = true;
@@ -60,6 +55,11 @@ users.users."niklas" = {
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
       pkgs.heroic
+      pkgs.weston
+      pkgs.waydroid
+      pkgs.wl-clipboard #For clipboard sharing
+      pkgs.genymotion
+      pkgs.retroarch-full
       pkgs.obsidian
       pkgs.libreoffice
       pkgs.gimp     
@@ -73,7 +73,7 @@ users.users."niklas" = {
       kdePackages.kate
       kdePackages.ark
       kdePackages.gwenview
-
+      kdePackages.okular
       
       #fun
       pkgs.hping
@@ -87,10 +87,11 @@ users.users."niklas" = {
       pkgs.vscode-fhs
       pkgs.python3
       pkgs.maven
-      pkgs.git
       pkgs.mermaid-cli
       pkgs.imagemagick
-      
+      pkgs.git
+      pkgs.jdt-language-server
+
       #Shell
       pkgs.kitty
       pkgs.fastfetch
@@ -105,8 +106,11 @@ users.users."niklas" = {
   programs.java.enable = true;
   # Install firefox.
   programs.firefox.enable = true;
-
   programs.steam.enable = true;
+
+  virtualisation.waydroid.enable = true;
+  # Newer kernel versions may need
+  virtualisation.waydroid.package = pkgs.waydroid-nftables;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
