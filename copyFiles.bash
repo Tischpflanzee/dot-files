@@ -30,5 +30,9 @@ copyNixOSConfig () {
 	echo "Copied NixOS Conf to /etc/nixos/"
 }
 
+installProgramms () {
+    sudo pacman -Syu yay kitty i3 obsidian
+}
+
 printWarning
 Menu
