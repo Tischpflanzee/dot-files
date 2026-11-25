@@ -31,7 +31,7 @@ copyNixOSConfig () {
 }
 
 installProgramms () {
-    sudo pacman -Syu yay kitty i3 obsidian
+    sudo pacman -Syu yay kitty i3 obsidian brightnessctl
 }
 
 printWarning
