@@ -31,7 +31,7 @@ copyNixOSConfig () {
 }
 
 installProgramms () {
-    sudo pacman -Syu yay kitty i3 obsidian brightnessctl power-profiles-daemon 
+    sudo pacman -Syu yay kitty i3 obsidian brightnessctl power-profiles-daemon fastfetch
 	echo "You need to Run 'systemctl enable --now power-profiles-daemon.service' to activate power-profiles-daemon"
 }
 
